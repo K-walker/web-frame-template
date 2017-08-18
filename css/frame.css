@@ -51,16 +51,18 @@
     color: #d2d2d2;
     position: absolute;
     left: 10px;
-    top: 30px;
-}
-
-.container .toggle-menu-icon.open {
+    top: 10px;
     transform:rotate(180deg);
     -webkit-transform:rotate(180deg);
     -moz-transform:rotate(180deg);
     -o-transform:rotate(180deg);
-    top: 35px;
-    left: 15px;
+}
+
+.container .toggle-menu-icon.open {
+    transform:rotate(0deg);
+    -webkit-transform:rotate(0deg);
+    -moz-transform:rotate(0deg);
+    -o-transform:rotate(0deg);
 }
 
 .container .toggle-menu-icon:hover {
@@ -90,6 +92,7 @@
     color: #dcdcdc ;
     float:left;
     width:100%;
+	max-height:calc(100% - 50px);
 }
 .left ul.first li {
     list-style: none;

@@ -92,7 +92,7 @@
     color: #dcdcdc ;
     float:left;
     width:100%;
-	max-height:calc(100% - 50px);
+    max-height: calc(100% - 50px);
 }
 .left ul.first li {
     list-style: none;
@@ -202,9 +202,10 @@
     float: left;
 }
 .top .top-nav .tab-container {
+    width: 0;
     float: left;
-    width: 100%;
     height: 100%;
+    padding-right: 5px;
 }
 
 /****========帧动画=======****/

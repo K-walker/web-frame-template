@@ -40,10 +40,10 @@
             title:'数据中心管理',
             path:'',
             children:[
-                {id:'011',icon:'',title:'资源管理',path:'page1.html',children:[]},
-                {id:'012',icon:'',title:'角色管理',path:'page1.html',children:[]},
-                {id:'013',icon:'',title:'用户管理',path:'page1.html',children:[]},
-                {id:'014',icon:'',title:'组织机构',path:'page1.html',children:[]}
+                {id:'011',icon:'',title:'资源管理',path:'',children:[]},
+                {id:'012',icon:'',title:'角色管理',path:'',children:[]},
+                {id:'013',icon:'',title:'用户管理',path:'',children:[]},
+                {id:'014',icon:'',title:'组织机构',path:'',children:[]}
             ]
         },
         {
@@ -52,10 +52,10 @@
             title:'权限管理',
             path:'',
             children:[
-                {id:'016',icon:'',title:'资源管理',path:'page1.html',children:[]},
-                {id:'017',icon:'',title:'角色管理',path:'page1.html',children:[]},
-                {id:'018',icon:'',title:'用户管理',path:'page1.html',children:[]},
-                {id:'019',icon:'',title:'组织机构',path:'page1.html',children:[]}
+                {id:'016',icon:'',title:'资源管理',path:'',children:[]},
+                {id:'017',icon:'',title:'角色管理',path:'',children:[]},
+                {id:'018',icon:'',title:'用户管理',path:'',children:[]},
+                {id:'019',icon:'',title:'组织机构',path:'',children:[]}
             ]
         },
         {
@@ -64,7 +64,7 @@
             title:'基础数据维护',
             path:'',
             children:[
-                {id:'021',icon:'',title:'数据字典管理',path:'page1.html',children:[]}
+                {id:'021',icon:'',title:'数据字典管理',path:'',children:[]}
             ]
         },
         {
@@ -73,10 +73,10 @@
             title:'系统管理',
             path:'',
             children:[
-                {id:'023',icon:'',title:'SD图管理',path:'page1.html',children:[]},
-                {id:'024',icon:'',title:'SD图审核及记录',path:'page1.html',children:[]},
-                {id:'025',icon:'',title:'SD图延迟预警',path:'page1.html',children:[]},
-                {id:'026',icon:'',title:'SD图操作日志',path:'page1.html',children:[]}
+                {id:'023',icon:'',title:'SD图管理',path:'',children:[]},
+                {id:'024',icon:'',title:'SD图审核及记录',path:'',children:[]},
+                {id:'025',icon:'',title:'SD图延迟预警',path:'',children:[]},
+                {id:'026',icon:'',title:'SD图操作日志',path:'',children:[]}
             ]
         },
         {
@@ -85,20 +85,17 @@
             title:'监控',
             path:'',
             children:[
-                {id:'024',icon:'',title:'SD图管理',path:'page1.html',children:[]},
-                {id:'025',icon:'',title:'SD图审核及记录',path:'page1.html',children:[]},
-                {id:'026',icon:'',title:'SD图延迟预警',path:'page1.html',children:[]},
-                {id:'027',icon:'',title:'SD图操作日志',path:'page1.html',children:[]}
+                {id:'024',icon:'',title:'SD图管理',path:'',children:[]},
+                {id:'025',icon:'',title:'SD图审核及记录',path:'',children:[]},
+                {id:'026',icon:'',title:'SD图延迟预警',path:'',children:[]},
+                {id:'027',icon:'',title:'SD图操作日志',path:'',children:[]}
             ]
         }
     ];
-
-    // 每个菜单id对应的单个数据，children.lenght == 0 的数据
+    // 每个菜单id对应的单个数据，children.length == 0 的数据
     var idMapData = {};
     // Tab 标签id的集合
     var tabList = [];
-    // Tab项的宽度总和
-    var tabLen = 0 ;
     // 当前点击活动的Tab
     var currTab = null ;
     // 当前活动的Page
@@ -109,6 +106,15 @@
     window.leftMenuToggleEvent = function (e) {
         toggleMenu();
         $(e.currentTarget).toggleClass('open' , '');
+        // PS:这里做的是特殊处理，因为首页展示很多报表，但是要求每行展示5个，这就需要
+        // 每个报表的margin根据iframe的宽高自适应，所以这里特别调用一下首页中的
+        // loopExecuteByCount 方法，进行动态调整margin （！！！特殊情况才添加如此下代码）
+        var home = document.getElementById("iframe001");
+        if(home) {
+            if(!$(home).hasClass('hide')) {
+                home.contentWindow.loopExecuteByCount(10 , 50);
+            }
+        }
     }
 
     /**
@@ -173,14 +179,11 @@
     function addTab (tab) {
         if(tabList.indexOf(tab.id) == -1) {
             if(currTab != null) $(currTab).removeClass('open');
-            if(tabLen > $(".tab-container").width() - 135) {
-                $(".tab-container").width(1.5 * $(".tab-container").width());
-            }
+            $(".tab-container").width($(".tab-container").width() + 135);
             var $tab = $(createTab(tab));
             $tab.find("i").click(onTabClose);
             $tab.click(onTabClick);
             $(".tab-container").append($tab);
-            tabLen += 135;
             tabList.push(tab.id);
             currTab = $tab[0] ;
             createTabPage(tab.id , tab.path);
@@ -256,8 +259,7 @@
         var id = $(e.currentTarget).closest(".tab").attr("tab-id");
         var index = tabList.indexOf(id);
         if(index != -1) tabList.splice(index , 1);
-        tabLen -= 135 ;
-
+        $(".tab-container").width($(".tab-container").width() - 135);
         var nextTab = $(e.currentTarget).closest(".tab").prev();
         if(nextTab.length == 0) {
             nextTab = $(e.currentTarget).closest(".tab").next();
@@ -301,14 +303,14 @@
      * 上一页
      */
     function onPrePage () {
-        $(".tab-scroll").scrollLeft(-$(".tab-scroll").width());
+        $(".tab-scroll").scrollLeft($(".tab-scroll").scrollLeft() - 135);
     }
 
     /**
      * 下一页
      */
     function onNextPage () {
-        $(".tab-scroll").scrollLeft($(".tab-scroll").width());
+        $(".tab-scroll").scrollLeft($(".tab-scroll").scrollLeft() + 135);
     }
 
     $(".tab-pre").click(onPrePage);

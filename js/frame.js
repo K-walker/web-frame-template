@@ -117,6 +117,24 @@
         }
     }
 
+	// 监听鼠标滚轮事件
+	$(".left").mouseenter(function () {
+		window._Wheel.registerWheelEvent(onScrollMenu);
+	});
+
+	$(".left").mouseleave(function () {
+		_Wheel.unregisterWheelEvent(onScrollMenu);
+	});
+
+	/**
+	 * 通过鼠标滚轮的滚动，来控制菜单的滚动
+	 */
+	function onScrollMenu (e) {
+		e = e || window.event ;
+        var distance = e.wheelDelta || e.detail ;
+		distance = distance > 0 ? 50 : -50 ;
+		$(".left ul.first").scrollTop($(".left ul.first").scrollTop() + distance);
+	}
     /**
      * 初始化菜单
      */
@@ -174,7 +192,11 @@
             title:idMapData[id].title,
             path:idMapData[id].path
         });
+
+		// TODO 菜单点击之后的操作
+
     }
+
 
     function addTab (tab) {
         if(tabList.indexOf(tab.id) == -1) {
@@ -318,5 +340,5 @@
 
     initMenu();
     // 如需框架默认加载首页，则取消下面注释的代码
-    // $(".left ul.first li").first().trigger("click");
+    //$(".left ul.first li").first().trigger("click");
 })()

@@ -92,8 +92,12 @@
     color: #dcdcdc ;
     float:left;
     width:100%;
-    max-height: calc(100% - 50px);
 }
+.left ul.first {
+	max-height: calc(100% - 50px);
+	overflow-y:hidden;
+}
+
 .left ul.first li {
     list-style: none;
     line-height: 48px;

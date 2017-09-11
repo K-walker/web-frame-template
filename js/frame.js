@@ -1,4 +1,4 @@
-/**
+ /**
  * Created by 004928 on 2017/8/16.
  */
 (function () {
@@ -109,12 +109,12 @@
         // PS:这里做的是特殊处理，因为首页展示很多报表，但是要求每行展示5个，这就需要
         // 每个报表的margin根据iframe的宽高自适应，所以这里特别调用一下首页中的
         // loopExecuteByCount 方法，进行动态调整margin （！！！特殊情况才添加如此下代码）
+        /*
         var home = document.getElementById("iframe001");
-        if(home) {
-            if(!$(home).hasClass('hide')) {
-                home.contentWindow.loopExecuteByCount(10 , 50);
-            }
+        if(home && !$(home).hasClass('hide')) {
+            home.contentWindow.loopExecuteByCount(10 , 50);
         }
+        */
     }
 
 	// 监听鼠标滚轮事件
@@ -123,7 +123,7 @@
 	});
 
 	$(".left").mouseleave(function () {
-		_Wheel.unregisterWheelEvent(onScrollMenu);
+		window._Wheel.unregisterWheelEvent(onScrollMenu);
 	});
 
 	/**
@@ -135,6 +135,7 @@
 		distance = distance > 0 ? 50 : -50 ;
 		$(".left ul.first").scrollTop($(".left ul.first").scrollTop() + distance);
 	}
+
     /**
      * 初始化菜单
      */
@@ -199,7 +200,7 @@
 
 
     function addTab (tab) {
-        if(tabList.indexOf(tab.id) == -1) {
+        if(_.indexOf(tabList , tab.id) == -1) {
             if(currTab != null) $(currTab).removeClass('open');
             $(".tab-container").width($(".tab-container").width() + 135);
             var $tab = $(createTab(tab));
@@ -279,7 +280,7 @@
         e.stopPropagation();
 
         var id = $(e.currentTarget).closest(".tab").attr("tab-id");
-        var index = tabList.indexOf(id);
+        var index = _.indexOf(tabList , id);
         if(index != -1) tabList.splice(index , 1);
         $(".tab-container").width($(".tab-container").width() - 135);
         var nextTab = $(e.currentTarget).closest(".tab").prev();

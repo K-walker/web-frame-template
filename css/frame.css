@@ -34,16 +34,16 @@
     position: absolute;
     left: 200px;
     top: 100px;
-    width: calc(100% - 200px);
+    right:0;
     bottom: 0;
     -webkit-transition:width .5s , top .5s , left .5s;
     transition:width .5s , top .5s , left .5s;
 }
 
 .container iframe {
-    width: calc(100% - 40px);
+    width: 100%;
     height: 100%;
-    float:right;
+    padding-left: 40px;
 }
 
 .container .toggle-menu-icon {

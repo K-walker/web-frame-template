@@ -266,13 +266,16 @@
      * @param path
      */
     function createTabPage (id , path) {
-        var page = $("<iframe class='myframe' id='iframe"+id+"' name='iframe' border='0' frameborder='0' src='"+path+"'></iframe>");
+        //var page = $("<iframe class='mypage' id='iframe"+id+"' name='iframe' border='0' frameborder='0' src='"+path+"'></iframe>");
+        var page = $("<div class='mypage' id='page"+id+"' ></div>");
         if(currPage != null) {
             currPage.addClass('hide');
         }
         $(".container").append(page);
         page.removeClass('hide');
         currPage = page ;
+        // 加载目标网页
+        window.loadPage(page[0] , path);
     }
 
     /**
@@ -295,7 +298,7 @@
      */
     function switchPage (id) {
         currPage.addClass('hide');
-        currPage = $("#iframe"+id).removeClass('hide');
+        currPage = $("#page"+id).removeClass('hide');
     }
 
     /**
@@ -305,7 +308,7 @@
      */
     function closePage (id , tab) {
         $(tab).closest(".tab").remove();
-        $("#iframe"+id).remove();
+        $("#page"+id).remove();
     }
 
     /**

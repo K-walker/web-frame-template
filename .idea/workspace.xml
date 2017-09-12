@@ -26,8 +26,8 @@
       <file leaf-file-name="frame.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/frame.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.25706595" vertical-offset="4653" max-vertical-offset="10752">
-              <caret line="265" column="18" selection-start-line="265" selection-start-column="18" selection-end-line="265" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.33243608" vertical-offset="4653" max-vertical-offset="10724">
+              <caret line="267" column="40" selection-start-line="267" selection-start-column="40" selection-end-line="267" selection-end-column="40" />
               <folding>
                 <element signature="e#85#248#0" expanded="false" />
                 <element signature="e#258#1307#0" expanded="false" />
@@ -36,7 +36,7 @@
                 <element signature="e#2291#2540#0" expanded="false" />
                 <element signature="e#2550#3037#0" expanded="false" />
                 <element signature="e#3047#3791#0" expanded="false" />
-                <marker date="1505217267359" expanded="true" signature="6588:6602" placeholder="..." />
+                <marker date="1505217961708" expanded="true" signature="6588:6602" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -285,7 +285,7 @@
             <element signature="e#2291#2540#0" expanded="false" />
             <element signature="e#2550#3037#0" expanded="false" />
             <element signature="e#3047#3791#0" expanded="false" />
-            <marker date="1505217267359" expanded="true" signature="6588:6602" placeholder="..." />
+            <marker date="1505217961708" expanded="true" signature="6588:6602" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -326,7 +326,7 @@
             <element signature="e#2291#2540#0" expanded="false" />
             <element signature="e#2550#3037#0" expanded="false" />
             <element signature="e#3047#3791#0" expanded="false" />
-            <marker date="1505217267359" expanded="true" signature="6588:6602" placeholder="..." />
+            <marker date="1505217961708" expanded="true" signature="6588:6602" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -387,8 +387,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/frame.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25706595" vertical-offset="4653" max-vertical-offset="10752">
-          <caret line="265" column="18" selection-start-line="265" selection-start-column="18" selection-end-line="265" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.33243608" vertical-offset="4653" max-vertical-offset="10724">
+          <caret line="267" column="40" selection-start-line="267" selection-start-column="40" selection-end-line="267" selection-end-column="40" />
           <folding>
             <element signature="e#85#248#0" expanded="false" />
             <element signature="e#258#1307#0" expanded="false" />
@@ -397,7 +397,7 @@
             <element signature="e#2291#2540#0" expanded="false" />
             <element signature="e#2550#3037#0" expanded="false" />
             <element signature="e#3047#3791#0" expanded="false" />
-            <marker date="1505217267359" expanded="true" signature="6588:6602" placeholder="..." />
+            <marker date="1505217961708" expanded="true" signature="6588:6602" placeholder="..." />
           </folding>
         </state>
       </provider>

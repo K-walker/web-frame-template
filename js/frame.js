@@ -266,7 +266,6 @@
      * @param path
      */
     function createTabPage (id , path) {
-        //var page = $("<iframe class='mypage' id='iframe"+id+"' name='iframe' border='0' frameborder='0' src='"+path+"'></iframe>");
         var page = $("<div class='mypage' id='page"+id+"' ></div>");
         if(currPage != null) {
             currPage.addClass('hide');

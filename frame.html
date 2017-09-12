@@ -5,12 +5,57 @@
     <title>主框架</title>
 	<link rel="stylesheet" type="text/css" href="css/common.css">
 	<link rel="stylesheet" type="text/css" href="css/frame.css">
+    <style>
+
+        .float-menu {
+            position: fixed !important;
+            color: #ffffff;
+            padding-left: 10px;
+            z-index: 1;
+        }
+        .float-arrow {
+            border-left: 5px solid transparent;
+            border-right: 5px solid #232323;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            position: absolute;
+            left: 0px;
+            top: 15px;
+        }
+        .float-menu ul {
+            background: #232323;
+            border-radius: 4px;
+        }
+        .float-menu ul li {
+            width: auto !important;
+            padding: 0 10px;
+            line-height: 40px;
+            margin: 2px;
+            float: none !important;
+        }
+        .float-menu ul li:hover {
+            background: #434343;
+            cursor: pointer;
+        }
+        .float-menu ul li i {
+            float: right;
+            font-size: 12px;
+            margin-top: 19px;
+            color: #ddd;
+        }
+        .float-menu ul li:hover i {
+            color:#ffffff;
+        }
+    </style>
 </head>
 <body>
     <div class="main">
 		<!--左侧菜单-->
         <div class="left">
-            <img src="images/logo.png">
+            <div class="logo">
+                <span> 后台管理系统框架 </span>
+                <i class="toggle-menu-icon icon-sk054" onclick="leftMenuToggleEvent(event)"></i>
+            </div>
             <ul class="menu first"></ul>
         </div>
 		<!--顶部导航栏-->
@@ -26,7 +71,7 @@
         </div>
 		<!--页面容器-->
         <div class="container">
-            <i class="toggle-menu-icon icon-sk054" onclick="leftMenuToggleEvent(event)"></i>
+
         </div>
     </div>
 <script src="js/jquery-1.8.1.min.js"></script>

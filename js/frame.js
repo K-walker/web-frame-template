@@ -20,69 +20,57 @@
                 {id:'003',icon:'',title:'岗位管理',children:[
                     {
                         icon:'icon-sk001',
-                        id:'003',
+                        id:'004',
                         title:'首11111页',
                         path:'page1.html',
                         children:[]
                     }
                 ]},
-                {id:'004',icon:'',title:'规定管理',path:'page2.html',children:[]},
-                {id:'005',icon:'',title:'术语管理',path:'page3.html',children:[]},
-                {id:'006',icon:'',title:'程序管理',path:'page1.html',children:[]},
-                {id:'007',icon:'',title:'附件管理',path:'page2.html',children:[]},
-                {id:'008',icon:'',title:'作废审批',path:'page3.html',children:[]},
-                {id:'009',icon:'',title:'岗位说明书管理',path:'page1.html',children:[]}
+                {id:'005',icon:'',title:'规定管理',path:'page2.html',children:[]},
+                {id:'006',icon:'',title:'术语管理',path:'page3.html',children:[]},
+                {id:'007',icon:'',title:'程序管理',path:'page1.html',children:[]},
+                {id:'008',icon:'',title:'附件管理',path:'page2.html',children:[]},
+                {id:'009',icon:'',title:'作废审批',path:'page3.html',children:[]},
+                {id:'010',icon:'',title:'岗位说明书管理',path:'page1.html',children:[]}
             ]
         },
         {
-            id:'010',
+            id:'011',
             icon:'icon-sk003',
             title:'数据中心管理',
             path:'',
             children:[
-                {id:'011',icon:'',title:'资源管理',path:'',children:[]},
-                {id:'012',icon:'',title:'角色管理',path:'',children:[]},
-                {id:'013',icon:'',title:'用户管理',path:'',children:[]},
-                {id:'014',icon:'',title:'组织机构',path:'',children:[]}
+                {id:'012',icon:'',title:'资源管理',path:'',children:[]},
+                {id:'013',icon:'',title:'角色管理',path:'',children:[]},
+                {id:'014',icon:'',title:'用户管理',path:'',children:[]},
+                {id:'015',icon:'',title:'组织机构',path:'',children:[]}
             ]
         },
         {
-            id:'015',
+            id:'016',
             icon:'icon-sk004',
             title:'权限管理',
             path:'',
             children:[
-                {id:'016',icon:'',title:'资源管理',path:'',children:[]},
-                {id:'017',icon:'',title:'角色管理',path:'',children:[]},
-                {id:'018',icon:'',title:'用户管理',path:'',children:[]},
-                {id:'019',icon:'',title:'组织机构',path:'',children:[]}
+                {id:'017',icon:'',title:'资源管理',path:'',children:[]},
+                {id:'018',icon:'',title:'角色管理',path:'',children:[]},
+                {id:'019',icon:'',title:'用户管理',path:'',children:[]},
+                {id:'020',icon:'',title:'组织机构',path:'',children:[]}
             ]
         },
         {
-            id:'020',
+            id:'021',
             icon:'icon-sk005',
             title:'基础数据维护',
             path:'',
             children:[
-                {id:'021',icon:'',title:'数据字典管理',path:'',children:[]}
-            ]
-        },
-        {
-            id:'022',
-            icon:'icon-sk006',
-            title:'系统管理',
-            path:'',
-            children:[
-                {id:'023',icon:'',title:'SD图管理',path:'',children:[]},
-                {id:'024',icon:'',title:'SD图审核及记录',path:'',children:[]},
-                {id:'025',icon:'',title:'SD图延迟预警',path:'',children:[]},
-                {id:'026',icon:'',title:'SD图操作日志',path:'',children:[]}
+                {id:'022',icon:'',title:'数据字典管理',path:'',children:[]}
             ]
         },
         {
             id:'023',
-            icon:'icon-sk007',
-            title:'监控',
+            icon:'icon-sk006',
+            title:'系统管理',
             path:'',
             children:[
                 {id:'024',icon:'',title:'SD图管理',path:'',children:[]},
@@ -90,16 +78,32 @@
                 {id:'026',icon:'',title:'SD图延迟预警',path:'',children:[]},
                 {id:'027',icon:'',title:'SD图操作日志',path:'',children:[]}
             ]
+        },
+        {
+            id:'028',
+            icon:'icon-sk007',
+            title:'监控',
+            path:'',
+            children:[
+                {id:'029',icon:'',title:'SD图管理',path:'',children:[]},
+                {id:'030',icon:'',title:'SD图审核及记录',path:'',children:[]},
+                {id:'031',icon:'',title:'SD图延迟预警',path:'',children:[]},
+                {id:'032',icon:'',title:'SD图操作日志',path:'',children:[]}
+            ]
         }
     ];
     // 每个菜单id对应的单个数据，children.length == 0 的数据
     var idMapData = {};
+    // 每个菜单id对应的孩子数据，children.length > 0 的数据
+    var idChildrenData = {};
     // Tab 标签id的集合
     var tabList = [];
     // 当前点击活动的Tab
     var currTab = null ;
     // 当前活动的Page
     var currPage = null ;
+    // 当前菜单是否是展开状态
+    var expendMenu = true ;
     /**
      * 左侧菜单栏展开关闭事件
      */
@@ -119,11 +123,15 @@
 
 	// 监听鼠标滚轮事件
 	$(".left").mouseenter(function () {
-		window._Wheel.registerWheelEvent(onScrollMenu);
+        if(expendMenu) {
+            window._Wheel.registerWheelEvent(onScrollMenu);
+        }
 	});
 
 	$(".left").mouseleave(function () {
-		window._Wheel.unregisterWheelEvent(onScrollMenu);
+        if(expendMenu) {
+            window._Wheel.unregisterWheelEvent(onScrollMenu);
+        }
 	});
 
 	/**
@@ -132,7 +140,7 @@
 	function onScrollMenu (e) {
 		e = e || window.event ;
         var distance = e.wheelDelta || e.detail ;
-		distance = distance > 0 ? 50 : -50 ;
+		distance = distance > 0 ? -50 : 50 ;
 		$(".left ul.first").scrollTop($(".left ul.first").scrollTop() + distance);
 	}
 
@@ -142,6 +150,21 @@
     function initMenu () {
         loopCreateMenu($(".first") , data);
         $(".first li").click(onMenuItemClick);
+        $(".left ul.first li").hover(onHoverInMenuItem , onHoverOutMenuItem);
+        initData(data);
+    }
+
+    /**
+     * 初始化数据
+     */
+    function initData (list) {
+        for(var i = 0 ; i < list.length ; i++) {
+            var obj = list[i];
+            if(obj.children.length > 0) {
+                idChildrenData[obj.id] = obj.children ;
+                arguments.callee(obj.children);
+            }
+        }
     }
 
     /**
@@ -150,10 +173,11 @@
     function loopCreateMenu (parent ,  menuData) {
         for(var i = 0 ; i < menuData.length ; i ++) {
             var menu = menuData[i];
-            parent.append(createMenuItem(menu));
+            var $menuItem = $(createMenuItem(menu));
+            parent.append($menuItem);
             if(menu.children.length > 0) {
                 var $childMenuBox = $("<ul class='menu hide inner-menu'></ul>");
-                parent.append($childMenuBox);
+                $menuItem.append($childMenuBox);
                 arguments.callee($childMenuBox , menu.children);
             }
         }
@@ -162,10 +186,14 @@
     function createMenuItem (menu) {
         if(menu.children.length == 0)  idMapData[menu.id] = menu ;
         var arrowCls = menu.children.length > 0 ? '' : 'hide';
-        return "<li menu-id='"+menu.id+"'>"+
+        var pl = '';
+        if(menu.icon == "") pl = "pl-48" ;
+        return "<li menu-id='"+menu.id+"' class='"+pl+"'>"+
+            "<div>"+
             "<i class='"+menu.icon+" menu-icon'></i>"+
             "<a>"+menu.title+"</a>"+
             "<i class='menu-arrow icon-sk027 "+arrowCls+"'></i>"+
+            "</div>"+
             "</li>";
     }
 
@@ -173,8 +201,10 @@
      * 响应菜单项的点击事件
      */
     function onMenuItemClick (ev) {
-        if($(ev.currentTarget).next().is('ul')) {
-            $(ev.currentTarget).next().slideToggle(300);
+        ev.preventDefault();ev.stopPropagation();
+        if($(ev.currentTarget).has("ul").length > 0) {
+            if(!expendMenu) return ;
+            $(ev.currentTarget).find("ul").first().slideToggle(300);
             if(!$(ev.currentTarget).find(".menu-arrow").hasClass("hide")) {
                 $(ev.currentTarget).find(".menu-arrow").toggleClass('icon-sk039','icon-sk027');
             }
@@ -193,7 +223,6 @@
             title:idMapData[id].title,
             path:idMapData[id].path
         });
-
 		// TODO 菜单点击之后的操作
 
     }
@@ -276,9 +305,7 @@
      *  2.没有其他界面，则显示空白
      */
     function onTabClose (e) {
-        e.preventDefault();
-        e.stopPropagation();
-
+        e.preventDefault(); e.stopPropagation();
         var id = $(e.currentTarget).closest(".tab").attr("tab-id");
         var index = _.indexOf(tabList , id);
         if(index != -1) tabList.splice(index , 1);
@@ -297,6 +324,9 @@
         nextTab.trigger("click");
     }
 
+    /**
+     * 展开/关闭菜单
+     */
     function toggleMenu () {
         toggleLeftMenu();
         toggleTopBar();
@@ -307,7 +337,9 @@
      * 展开/收缩左侧菜单
      */
     function toggleLeftMenu () {
+        expendMenu = !expendMenu ;
         $(".left").toggleClass('slide-left-out' , '');
+        $(".inner-menu").slideUp();
     }
     /**
      * 展开/收缩顶部导航
@@ -334,6 +366,70 @@
      */
     function onNextPage () {
         $(".tab-scroll").scrollLeft($(".tab-scroll").scrollLeft() + 135);
+    }
+
+    function onHoverInMenuItem (ev) {
+        ev.preventDefault();ev.stopPropagation();
+        var menuId = $(ev.currentTarget).attr("menu-id") ;
+        var floatMenu = document.getElementById("f"+menuId);
+        if(!expendMenu && floatMenu == null) {
+            if(idChildrenData[menuId]) {
+                createFloatMenu(ev.currentTarget ,  menuId);
+            }
+        }
+    }
+
+    function onHoverOutMenuItem (ev) {
+        var menuId = $(ev.currentTarget).attr("menu-id") ;
+        var floatMenu = document.getElementById("f"+menuId);
+        if(!expendMenu) {
+            if(floatMenu != null) {
+                $(floatMenu).fadeOut(function () {
+                    $(floatMenu).remove();
+                })
+            }
+        }
+    }
+
+    /**
+     * 创建悬浮菜单
+     */
+    function createFloatMenu (target , menuId) {
+        var menuData = idChildrenData[menuId];
+        var $floatMenu = $("<div class='float-menu hide' id='f"+menuId+"'></div>");
+        $floatMenu.append("<div class='float-arrow'></div><ul></ul>");
+        for(var i = 0 ; i < menuData.length ; i ++) {
+            var menu = menuData[i];
+            var $menuItem = $(createFloatMenuItem(menu));
+            $menuItem.hover(onHoverInMenuItem , onHoverOutMenuItem);
+            $menuItem.click(onFloatMenuItemClick);
+            $floatMenu.find("ul").append($menuItem);
+        }
+        var offset = $(target).offset();
+        offset.left += target.clientWidth;
+        $floatMenu.offset(offset);
+        $(target).append($floatMenu);
+        $floatMenu.fadeIn();
+    }
+
+    /**
+     * 创建悬浮菜单项
+     */
+    function createFloatMenuItem (obj) {
+        var arrCls = obj.children.length > 0 ? "icon-sk027":"icon-sk027 hide";
+        return "<li menu-id='"+obj.id+"'><a>"+obj.title+"</a><i class='"+arrCls+"'></i></li>";
+    }
+
+    /**
+     * 浮动菜单的点击事件
+     */
+    function onFloatMenuItemClick (e) {
+        e.preventDefault();e.stopPropagation();
+        var menuId = $(e.currentTarget).attr("menu-id");
+        if(!idChildrenData[menuId]) {
+            excuteMenuEvent(e);
+            $(".float-menu").remove();
+        }
     }
 
     $(".tab-pre").click(onPrePage);

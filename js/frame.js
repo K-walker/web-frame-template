@@ -85,10 +85,14 @@
             title:'监控',
             path:'',
             children:[
-                {id:'029',icon:'',title:'SD图管理',path:'',children:[]},
-                {id:'030',icon:'',title:'SD图审核及记录',path:'',children:[]},
-                {id:'031',icon:'',title:'SD图延迟预警',path:'',children:[]},
-                {id:'032',icon:'',title:'SD图操作日志',path:'',children:[]}
+                {id:'029',icon:'',title:'SD图管理',path:'',children:[
+                    {id:'030',icon:'',title:'SD图一',path:'',children:[]},
+                    {id:'031',icon:'',title:'SD图二',path:'',children:[]},
+                    {id:'032',icon:'',title:'SD图三',path:'',children:[]}
+                ]},
+                {id:'033',icon:'',title:'SD图审核及记录',path:'',children:[]},
+                {id:'034',icon:'',title:'SD图延迟预警',path:'',children:[]},
+                {id:'035',icon:'',title:'SD图操作日志',path:'',children:[]}
             ]
         }
     ];
@@ -405,10 +409,26 @@
             $menuItem.click(onFloatMenuItemClick);
             $floatMenu.find("ul").append($menuItem);
         }
+        $(target).append($floatMenu);
+        setFloatMenuPosition(target , $floatMenu);
+    }
+
+    /**
+     * 设置悬浮菜单的位置
+     * 如果下级菜单的高度大于上级菜单的top值，则底部对其
+     * 在菜单显示之前是无法获取高度的，所以这里用菜单的固定高度*菜单的数量来计算
+     */
+    function setFloatMenuPosition (target , $floatMenu) {
         var offset = $(target).offset();
         offset.left += target.clientWidth;
+        var floatMenuHeight = $floatMenu.find("ul").first().children().length * 50 ;
+        if($("body").height() - offset.top < floatMenuHeight) {
+            offset.top -= (floatMenuHeight - 50);
+            var arrowOffset = $(".float-arrow").offset() ;
+            arrowOffset.top += (floatMenuHeight - 50);
+            $(".float-arrow").offset(arrowOffset);
+        }
         $floatMenu.offset(offset);
-        $(target).append($floatMenu);
         $floatMenu.fadeIn();
     }
 

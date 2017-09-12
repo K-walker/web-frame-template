@@ -44,10 +44,10 @@
             path:'',
             level:1,
             children:[
-                {id:'012',level:2,icon:'',title:'资源管理',path:'',children:[]},
-                {id:'013',level:2,icon:'',title:'角色管理',path:'',children:[]},
-                {id:'014',level:2,icon:'',title:'用户管理',path:'',children:[]},
-                {id:'015',level:2,icon:'',title:'组织机构',path:'',children:[]}
+                {id:'012',level:2,icon:'',title:'资源管理',path:'page1.html',children:[]},
+                {id:'013',level:2,icon:'',title:'角色管理',path:'page1.html',children:[]},
+                {id:'014',level:2,icon:'',title:'用户管理',path:'page1.html',children:[]},
+                {id:'015',level:2,icon:'',title:'组织机构',path:'page1.html',children:[]}
             ]
         },
         {
@@ -57,10 +57,10 @@
             path:'',
             level:1,
             children:[
-                {id:'017',level:2,icon:'',title:'资源管理',path:'',children:[]},
-                {id:'018',level:2,icon:'',title:'角色管理',path:'',children:[]},
-                {id:'019',level:2,icon:'',title:'用户管理',path:'',children:[]},
-                {id:'020',level:2,icon:'',title:'组织机构',path:'',children:[]}
+                {id:'017',level:2,icon:'',title:'资源管理',path:'page1.html',children:[]},
+                {id:'018',level:2,icon:'',title:'角色管理',path:'page1.html',children:[]},
+                {id:'019',level:2,icon:'',title:'用户管理',path:'page1.html',children:[]},
+                {id:'020',level:2,icon:'',title:'组织机构',path:'page1.html',children:[]}
             ]
         },
         {
@@ -70,7 +70,7 @@
             path:'',
             level:1,
             children:[
-                {id:'022',level:2,icon:'',title:'数据字典管理',path:'',children:[]}
+                {id:'022',level:2,icon:'',title:'数据字典管理',path:'page1.html',children:[]}
             ]
         },
         {
@@ -80,10 +80,10 @@
             path:'',
             level:1,
             children:[
-                {id:'024',level:2,icon:'',title:'SD图管理',path:'',children:[]},
-                {id:'025',level:2,icon:'',title:'SD图审核及记录',path:'',children:[]},
-                {id:'026',level:2,icon:'',title:'SD图延迟预警',path:'',children:[]},
-                {id:'027',level:2,icon:'',title:'SD图操作日志',path:'',children:[]}
+                {id:'024',level:2,icon:'',title:'SD图管理',path:'page1.html',children:[]},
+                {id:'025',level:2,icon:'',title:'SD图审核及记录',path:'page1.html',children:[]},
+                {id:'026',level:2,icon:'',title:'SD图延迟预警',path:'page1.html',children:[]},
+                {id:'027',level:2,icon:'',title:'SD图操作日志',path:'page1.html',children:[]}
             ]
         },
         {
@@ -93,14 +93,14 @@
             path:'',
             level:1,
             children:[
-                {id:'029',level:2,icon:'',title:'SD图管理',path:'',children:[
-                    {id:'030',level:3,icon:'',title:'SD图一',path:'',children:[]},
-                    {id:'031',level:3,icon:'',title:'SD图二',path:'',children:[]},
-                    {id:'032',level:3,icon:'',title:'SD图三',path:'',children:[]}
+                {id:'029',level:2,icon:'',title:'SD图管理',path:'page1.html',children:[
+                    {id:'030',level:3,icon:'',title:'SD图一',path:'page1.html',children:[]},
+                    {id:'031',level:3,icon:'',title:'SD图二',path:'page1.html',children:[]},
+                    {id:'032',level:3,icon:'',title:'SD图三',path:'page1.html',children:[]}
                 ]},
-                {id:'033',level:2,icon:'',title:'SD图审核及记录',path:'',children:[]},
-                {id:'034',level:2,icon:'',title:'SD图延迟预警',path:'',children:[]},
-                {id:'035',level:2,icon:'',title:'SD图操作日志',path:'',children:[]}
+                {id:'033',level:2,icon:'',title:'SD图审核及记录',path:'page1.html',children:[]},
+                {id:'034',level:2,icon:'',title:'SD图延迟预警',path:'page1.html',children:[]},
+                {id:'035',level:2,icon:'',title:'SD图操作日志',path:'page1.html',children:[]}
             ]
         }
     ];

@@ -9,29 +9,32 @@
             id:'001',
             title:'首页',
             path:'home.html',
+            level:1,
             children:[]
         },
         {
             icon:'icon-sk002',
             title:'报表',
             id:'002',
+            level:1,
             path:'',
             children:[
-                {id:'003',icon:'',title:'岗位管理',children:[
+                {id:'003', level:2, icon:'',title:'岗位管理',children:[
                     {
-                        icon:'icon-sk001',
+                        icon:'',
                         id:'004',
+                        level:3,
                         title:'首11111页',
                         path:'page1.html',
                         children:[]
                     }
                 ]},
-                {id:'005',icon:'',title:'规定管理',path:'page2.html',children:[]},
-                {id:'006',icon:'',title:'术语管理',path:'page3.html',children:[]},
-                {id:'007',icon:'',title:'程序管理',path:'page1.html',children:[]},
-                {id:'008',icon:'',title:'附件管理',path:'page2.html',children:[]},
-                {id:'009',icon:'',title:'作废审批',path:'page3.html',children:[]},
-                {id:'010',icon:'',title:'岗位说明书管理',path:'page1.html',children:[]}
+                {id:'005',level:2, icon:'',title:'规定管理',path:'page2.html',children:[]},
+                {id:'006',level:2, icon:'',title:'术语管理',path:'page3.html',children:[]},
+                {id:'007',level:2, icon:'',title:'程序管理',path:'page1.html',children:[]},
+                {id:'008',level:2, icon:'',title:'附件管理',path:'page2.html',children:[]},
+                {id:'009',level:2, icon:'',title:'作废审批',path:'page3.html',children:[]},
+                {id:'010',level:2, icon:'',title:'岗位说明书管理',path:'page1.html',children:[]}
             ]
         },
         {
@@ -39,11 +42,12 @@
             icon:'icon-sk003',
             title:'数据中心管理',
             path:'',
+            level:1,
             children:[
-                {id:'012',icon:'',title:'资源管理',path:'',children:[]},
-                {id:'013',icon:'',title:'角色管理',path:'',children:[]},
-                {id:'014',icon:'',title:'用户管理',path:'',children:[]},
-                {id:'015',icon:'',title:'组织机构',path:'',children:[]}
+                {id:'012',level:2,icon:'',title:'资源管理',path:'',children:[]},
+                {id:'013',level:2,icon:'',title:'角色管理',path:'',children:[]},
+                {id:'014',level:2,icon:'',title:'用户管理',path:'',children:[]},
+                {id:'015',level:2,icon:'',title:'组织机构',path:'',children:[]}
             ]
         },
         {
@@ -51,11 +55,12 @@
             icon:'icon-sk004',
             title:'权限管理',
             path:'',
+            level:1,
             children:[
-                {id:'017',icon:'',title:'资源管理',path:'',children:[]},
-                {id:'018',icon:'',title:'角色管理',path:'',children:[]},
-                {id:'019',icon:'',title:'用户管理',path:'',children:[]},
-                {id:'020',icon:'',title:'组织机构',path:'',children:[]}
+                {id:'017',level:2,icon:'',title:'资源管理',path:'',children:[]},
+                {id:'018',level:2,icon:'',title:'角色管理',path:'',children:[]},
+                {id:'019',level:2,icon:'',title:'用户管理',path:'',children:[]},
+                {id:'020',level:2,icon:'',title:'组织机构',path:'',children:[]}
             ]
         },
         {
@@ -63,8 +68,9 @@
             icon:'icon-sk005',
             title:'基础数据维护',
             path:'',
+            level:1,
             children:[
-                {id:'022',icon:'',title:'数据字典管理',path:'',children:[]}
+                {id:'022',level:2,icon:'',title:'数据字典管理',path:'',children:[]}
             ]
         },
         {
@@ -72,11 +78,12 @@
             icon:'icon-sk006',
             title:'系统管理',
             path:'',
+            level:1,
             children:[
-                {id:'024',icon:'',title:'SD图管理',path:'',children:[]},
-                {id:'025',icon:'',title:'SD图审核及记录',path:'',children:[]},
-                {id:'026',icon:'',title:'SD图延迟预警',path:'',children:[]},
-                {id:'027',icon:'',title:'SD图操作日志',path:'',children:[]}
+                {id:'024',level:2,icon:'',title:'SD图管理',path:'',children:[]},
+                {id:'025',level:2,icon:'',title:'SD图审核及记录',path:'',children:[]},
+                {id:'026',level:2,icon:'',title:'SD图延迟预警',path:'',children:[]},
+                {id:'027',level:2,icon:'',title:'SD图操作日志',path:'',children:[]}
             ]
         },
         {
@@ -84,15 +91,16 @@
             icon:'icon-sk007',
             title:'监控',
             path:'',
+            level:1,
             children:[
-                {id:'029',icon:'',title:'SD图管理',path:'',children:[
-                    {id:'030',icon:'',title:'SD图一',path:'',children:[]},
-                    {id:'031',icon:'',title:'SD图二',path:'',children:[]},
-                    {id:'032',icon:'',title:'SD图三',path:'',children:[]}
+                {id:'029',level:2,icon:'',title:'SD图管理',path:'',children:[
+                    {id:'030',level:3,icon:'',title:'SD图一',path:'',children:[]},
+                    {id:'031',level:3,icon:'',title:'SD图二',path:'',children:[]},
+                    {id:'032',level:3,icon:'',title:'SD图三',path:'',children:[]}
                 ]},
-                {id:'033',icon:'',title:'SD图审核及记录',path:'',children:[]},
-                {id:'034',icon:'',title:'SD图延迟预警',path:'',children:[]},
-                {id:'035',icon:'',title:'SD图操作日志',path:'',children:[]}
+                {id:'033',level:2,icon:'',title:'SD图审核及记录',path:'',children:[]},
+                {id:'034',level:2,icon:'',title:'SD图延迟预警',path:'',children:[]},
+                {id:'035',level:2,icon:'',title:'SD图操作日志',path:'',children:[]}
             ]
         }
     ];
@@ -190,10 +198,9 @@
     function createMenuItem (menu) {
         if(menu.children.length == 0)  idMapData[menu.id] = menu ;
         var arrowCls = menu.children.length > 0 ? '' : 'hide';
-        var pl = '';
-        if(menu.icon == "") pl = "pl-48" ;
-        return "<li menu-id='"+menu.id+"' class='"+pl+"'>"+
-            "<div>"+
+        var pl = (menu.level - 1) * 24;
+        return "<li menu-id='"+menu.id+"'>"+
+            "<div class='box' style='padding-left: "+pl+"px'>"+
             "<i class='"+menu.icon+" menu-icon'></i>"+
             "<a>"+menu.title+"</a>"+
             "<i class='menu-arrow icon-sk027 "+arrowCls+"'></i>"+
@@ -207,11 +214,11 @@
     function onMenuItemClick (ev) {
         ev.preventDefault();ev.stopPropagation();
         if($(ev.currentTarget).has("ul").length > 0) {
+            if(!$(ev.currentTarget).find(".menu-arrow").first().hasClass("hide")) {
+                $(ev.currentTarget).find(".menu-arrow").first().toggleClass('icon-sk039','icon-sk027');
+            }
             if(!expendMenu) return ;
             $(ev.currentTarget).find("ul").first().slideToggle(300);
-            if(!$(ev.currentTarget).find(".menu-arrow").hasClass("hide")) {
-                $(ev.currentTarget).find(".menu-arrow").toggleClass('icon-sk039','icon-sk027');
-            }
         } else {
             excuteMenuEvent(ev);
         }
@@ -373,10 +380,11 @@
     }
 
     function onHoverInMenuItem (ev) {
+        if(expendMenu) {return ;}
         ev.preventDefault();ev.stopPropagation();
         var menuId = $(ev.currentTarget).attr("menu-id") ;
         var floatMenu = document.getElementById("f"+menuId);
-        if(!expendMenu && floatMenu == null) {
+        if(floatMenu == null) {
             if(idChildrenData[menuId]) {
                 createFloatMenu(ev.currentTarget ,  menuId);
             }
@@ -384,14 +392,13 @@
     }
 
     function onHoverOutMenuItem (ev) {
+        if(expendMenu) {return ;}
         var menuId = $(ev.currentTarget).attr("menu-id") ;
         var floatMenu = document.getElementById("f"+menuId);
-        if(!expendMenu) {
-            if(floatMenu != null) {
-                $(floatMenu).fadeOut(function () {
-                    $(floatMenu).remove();
-                })
-            }
+        if(floatMenu != null) {
+            $(floatMenu).fadeOut(function () {
+                $(floatMenu).remove();
+            })
         }
     }
 

@@ -128,6 +128,7 @@
     color: #dcdcdc ;
     float:left;
     width:100%;
+    background: #232323;
 }
 .left ul.first {
 	position: absolute;
@@ -140,7 +141,6 @@
 .left ul.first li {
     list-style: none;
     line-height: 48px;
-    margin-bottom: 1px;
     background-color: #434343;
 }
 .left ul.first li:hover {
@@ -148,16 +148,15 @@
 }
 .left .first ul li {
     background-color: #2e2e2e;
-    margin-bottom: 1px;
     float: left;
     width: 100%;
 }
 .pl-48 {
     padding-left: 48px;
 }
-.left .first .inner-menu {
-    /*max-height: 300px;*/
-    /*overflow: auto !important;*/
+
+.left .menu li .box:hover {
+    background: #000000;
 }
 
 .left .menu li i.menu-icon {
